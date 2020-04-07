@@ -23,12 +23,12 @@ export default {
     }
   },
   mounted() {
+    // add ByteArk Lighthouse middleware to videojs
+    videojs.use('*', window.ByteArkLighthouse.middleware);
+    
     this.player = videojs(this.$refs.videoPlayer, this.options, function onPlayerReady() {
       console.log('onPlayerReady', this);
     });
-
-    // add ByteArk Lighthouse middleware to videojs
-    videojs.use('*', window.ByteArkLighthouse.middleware);
 
     // init Byteark Lighthouse
     window.ByteArkLighthouse.init(this.player, {
